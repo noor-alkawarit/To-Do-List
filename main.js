@@ -14,10 +14,8 @@ function addItem () {
     return;
   }
 
-  //check if data is empty?
- 
-
   const li = document.createElement("li")
+  // li.className = "cssClass"
   const text = document.createElement("p")
   text.innerText = data
   const button = document.createElement("button")
@@ -27,7 +25,7 @@ function addItem () {
   //append text to li
   li.appendChild(text)
   //append button to li
- li.appendChild(button)
+  li.appendChild(button)
 
   ulElement.appendChild(li)
   // reset input field
@@ -35,5 +33,11 @@ function addItem () {
 }
 
 function deleteItem(event){
-  //runs when we press delete button on Li
+  //runs when we press delete button on Li  
+  //which li to delete?
+  const li = event.target.closest("li");
+  const ul = li.closest("ul");
+  const ulChildren = Array.from(ul.children);
+  const index = ulChildren.indexOf(li);
+  ul.removeChild(ul.children[index])
 }
